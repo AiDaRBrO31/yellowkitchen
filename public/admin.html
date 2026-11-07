@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YellowKitchen · Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- Вход -->
+    <section class="login-screen" id="login" hidden>
+        <form class="login-box" onsubmit="doLogin(event)">
+            <div class="logo">yellow<span>kitchen</span> <small>admin</small></div>
+            <input id="loginEmail" type="email" placeholder="Admin email" required>
+            <input id="loginPass" type="password" placeholder="Password" required>
+            <p class="error" id="loginError"></p>
+            <button type="submit" class="btn primary">Log in</button>
+            <a href="/" class="back-link">← Back to site</a>
+        </form>
+    </section>
+
+    <!-- Панель -->
+    <div id="app" hidden>
+        <header class="topbar">
+            <div class="logo">yellow<span>kitchen</span> <small>admin</small></div>
+            <nav class="tabs">
+                <button data-tab="dashboard" onclick="showTab('dashboard')">Dashboard</button>
+                <button data-tab="orders" onclick="showTab('orders')">Orders</button>
+                <button data-tab="restaurants" onclick="showTab('restaurants')">Restaurants</button>
+                <button data-tab="subscribers" onclick="showTab('subscribers')">Subscribers</button>
+            </nav>
+            <div class="topbar-right">
+                <a href="/" class="back-link">Site</a>
+                <span id="adminName"></span>
+                <button class="btn" onclick="logout()">Log out</button>
+            </div>
+        </header>
+
+        <main class="content" id="view"></main>
+    </div>
+
+    <div class="modal" id="modal" onclick="if (event.target === this) closeModal()">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

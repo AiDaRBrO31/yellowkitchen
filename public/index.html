@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YellowKitchen by Dictator_H</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sp1.css">
+    <link rel="stylesheet" href="extra.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">yellow<span>kitchen</span></div>
+        <div class="header-right">
+            <a href="#" class="header-link" id="loginLink"><span class="icon">👤</span> <span id="loginLabel">Log in</span></a>
+            <a href="#" class="header-link cart-link" id="cartLink"><span class="icon">🛒</span> <span id="cart-count">0</span></a>
+            <button class="burger-btn" id="burgerBtn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="side-menu" id="sideMenu">
+        <button class="close-btn" id="closeBtn">✕</button>
+        <a href="tel:0800111126" class="menu-phone">0800 111 126</a>
+        <nav class="menu-nav">
+            <a href="#">Delivery info</a>
+            <a href="#">About us</a>
+            <a href="#restaurants">Restaurants</a>
+            <a href="#specialities">Specialities</a>
+        </nav>
+    </div>
+
+    <main class="hero-section">
+        <div class="hero-content">
+            <h1>Your Food court<br>at home</h1>
+            <div class="toggle-buttons">
+                <button class="tab-btn active" onclick="toggleHeroTab(this, 'delivery')">Delivery<span class="sub-text">Order in</span></button>
+                <button class="tab-btn" onclick="toggleHeroTab(this, 'takeout')">Takeout<span class="sub-text">Grab and go</span></button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="./img/Salad.png" alt="Fresh salad bowl">
+        </div>
+    </main>
+
+    <div class="features-container">
+        <div class="feature-card">
+            <span class="feature-icon">🕒</span>
+            <div class="feature-text">
+                <h3>Delivery in all Paris</h3>
+                <p>in less than 30 minutes</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">🚚</span>
+            <div class="feature-text">
+                <h3>Free delivery</h3>
+                <p>from 29 euros</p>
+            </div>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">🗼</span>
+            <div class="feature-text">
+                <h3>Only fresh</h3>
+                <p>and French products</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="section categories-section" id="specialities">
+        <h2 class="section-title">Specialities</h2>
+        <div class="categories-slider">
+            <div class="category-item active" onclick="filterMenu('all', this)">
+                <div class="cat-icon">✨</div><p>All</p>
+            </div>
+            <div class="category-item" onclick="filterMenu('burger', this)">
+                <div class="cat-icon">🍔</div><p>Burgers</p>
+            </div>
+            <div class="category-item" onclick="filterMenu('risotto', this)">
+                <div class="cat-icon">🥘</div><p>Risotto</p>
+            </div>
+            <div class="category-item" onclick="filterMenu('asian', this)">
+                <div class="cat-icon">🥢</div><p>Asian</p>
+            </div>
+            <div class="category-item" onclick="filterMenu('salads', this)">
+                <div class="cat-icon">🥗</div><p>Salads</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="restaurants">
+        <div class="section-header">
+            <h2 class="section-title">Restaurants</h2>
+            <button class="show-all-btn" onclick="showAll()">show all</button>
+        </div>
+        <div class="restaurants-grid" id="restaurantsGrid"></div>
+    </section>
+
+    <section class="section subscribe-section">
+        <div class="subscribe-content">
+            <h2>Stay in the loop</h2>
+            <p>Subscribe to get news about new restaurants and special offers.</p>
+        </div>
+        <div class="subscribe-form-box">
+            <form id="subscribeForm" onsubmit="handleSubscribe(event)">
+                <input type="email" id="subscriberEmail" placeholder="Enter your email address" required>
+                <button type="submit" class="btn-yellow-submit">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="stats-section-bg">
+        <div class="stats-grid-overlay">
+            <div class="stat-item">
+                <div class="stat-circle">1</div>
+                <p>Kitchen</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-circle">4</div>
+                <p>Specialities</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-circle" id="statRestaurants">0</div>
+                <p>Restaurants</p>
+            </div>
+            <div class="stat-item">
+                <div class="stat-circle">1</div>
+                <p>Transport Costs</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding-bottom:0">
+        <h2 class="section-title">Your nearest restaurants</h2>
+        <p style="color:var(--gray); margin-top:8px;">Each time you order, we find the closest kitchen to deliver it in less than 30 mins.</p>
+    </section>
+
+    <section class="slider-section">
+        <div class="map-wrapper-frame" id="mapFrame">
+            <img src="./img/Map.png" alt="Map Roads" class="map-bg-roads">
+            <img src="./img/delivary map.png" alt="Yellow Paris" class="map-overlay-yellow">
+        </div>
+    </section>
+
+    <section class="section instagram-section">
+        <h2 class="section-title-insta">#YellowKitchens in Instagram</h2>
+        <div class="instagram-grid">
+            <div class="insta-card"><img src="./img/insta1.jpg" alt="Kitchen process"></div>
+            <div class="insta-card"><img src="./img/insta2.jpg" alt="Chef cook"></div>
+            <div class="insta-card"><img src="./img/insta3.jpg" alt="Fresh food container"></div>
+            <div class="insta-card"><img src="./img/insta4.jpg" alt="Delicious dish"></div>
+        </div>
+    </section>
+
+    <footer class="footer-beauty">
+        <div class="footer-top-row">
+            <div class="footer-col-main">
+                <div class="footer-brand-logo">yellow<span>kitchen</span></div>
+                <hr class="footer-divider-line">
+                <div class="store-badges">
+                    <a href="#" class="store-badge-link"><img src="./img/app store.png"alt="Download on the App Store"></a>
+                    <a href="#" class="store-badge-link"><img src="./img/google play.png" alt="Get it on Google Play"></a>
+                </div>
+            </div>
+
+            <div class="footer-col-links">
+                <h4>About us</h4>
+                <ul>
+                    <li><a href="#">Concept</a></li>
+                    <li><a href="#">Franchise</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Restaurant signup</a></li>
+                    <li><a href="#">For Investors</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col-links">
+                <h4>Get help</h4>
+                <ul>
+                    <li><a href="#">Read FAQs</a></li>
+                    <li><a href="#restaurants">Restaurants</a></li>
+                    <li><a href="#specialities">Specialities</a></li>
+                    <li><a href="#">Sign up to deliver</a></li>
+                    <li><a href="#" class="lang-selector">English <span class="arrow-down">⋁</span></a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col-links contact-column">
+                <h4>Contact us</h4>
+                <p class="contact-text-item">Yellow kitchen Paris 11</p>
+                <p class="contact-text-item address-item">69 avenue de la Republique 75011 Paris</p>
+                <p class="contact-text-item phone-item"><a href="tel:0800111126">0800 111 126</a></p>
+                <p class="contact-text-item email-item"><a href="mailto:contact@yellowkitchens.com">contact@yellowkitchens.com</a></p>
+            </div>
+        </div>
+
+        <div class="footer-bottom-row">
+            <div class="social-networks-links">
+                <a href="#" class="social-icon-svg">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="social-icon-svg">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                </a>
+                <a href="#" class="social-icon-svg">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+            </div>
+
+            <div class="legal-info-box">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms</a>
+                <span class="copyright-text">© 2020 Yellow kitchen</span>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="modal" onclick="if (event.target === this) closeModal()">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="sp2.js"></script>
+</body>
+</html>

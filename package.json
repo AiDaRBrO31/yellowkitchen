@@ -1,0 +1,15 @@
+{
+  "name": "yellowkitchen",
+  "version": "1.0.0",
+  "description": "YellowKitchen - food delivery demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^12.2.0",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
